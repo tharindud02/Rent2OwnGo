@@ -36,7 +36,7 @@ function AboutUsSectionOne() {
                 </div>
                 <div className="ltn__feature-info">
                   <h4>
-                    <Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">
+                    <Link href="https://Rent2OwnGo-nextjs.netlify.app/service/buy-a-home">
                       The Perfect Residency
                     </Link>
                   </h4>
@@ -54,7 +54,7 @@ function AboutUsSectionOne() {
                 </div>
                 <div className="ltn__feature-info">
                   <h4>
-                    <Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">
+                    <Link href="https://Rent2OwnGo-nextjs.netlify.app/service/buy-a-home">
                       Global Architect Experts
                     </Link>
                   </h4>
@@ -72,7 +72,7 @@ function AboutUsSectionOne() {
                 </div>
                 <div className="ltn__feature-info">
                   <h4>
-                    <Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">
+                    <Link href="https://Rent2OwnGo-nextjs.netlify.app/service/buy-a-home">
                       Built-in Storage Cupboards
                     </Link>
                   </h4>

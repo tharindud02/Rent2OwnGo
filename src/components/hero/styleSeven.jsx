@@ -105,15 +105,20 @@ function HeroSectionStyleSeven({ navMenuClass }) {
           <Form.Group key={question._id} className="mb-3">
             <Form.Label>{question.question}</Form.Label>
             {question.options.map((option, index) => (
-              <Form.Check
+              <div
                 key={index}
-                type="radio"
-                label={option}
-                name={question._id}
-                onChange={() => handleAnswerChange(question._id, option)}
-              />
+                className="mb-3 p-3 border rounded theme-btn-1 btn-effect-1 "
+                style={{ cursor: "pointer", transition: "background-color 0.3s" }}
+                onClick={() => {
+                  handleAnswerChange(question._id, option);
+                  handleNextClick();
+                }}
+              >
+                {option}
+              </div>
             ))}
           </Form.Group>
+
         );
       case 'textarea':
         return (
@@ -189,12 +194,13 @@ function HeroSectionStyleSeven({ navMenuClass }) {
                           className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
                         >
                           <div className="btn-wrapper text-center mt-0">
-                            <Button
+                            {questions[currentQuestionIndex] && questions[currentQuestionIndex].type != 'text' && <Button
                               onClick={handleNextClick}
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
                             >
                               Next
-                            </Button>
+                            </Button>}
+
                           </div>
                         </Col>
                       </Form>

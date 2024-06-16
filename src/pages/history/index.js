@@ -250,7 +250,7 @@ function HistoryPage() {
                                     <div className="ltn__feature-icon">
                                         <span><i className="flaticon-house-4"></i></span>
                                     </div>
-                                    <h3 className="animated fadeIn"><Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">The Perfect Residency</Link></h3>
+                                    <h3 className="animated fadeIn"><Link href="https://Rent2OwnGo-nextjs.netlify.app/service/buy-a-home">The Perfect Residency</Link></h3>
                                 </div>
                                 <div className="ltn__feature-info">
                                     <p>Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.</p>
@@ -263,7 +263,7 @@ function HistoryPage() {
                                     <div className="ltn__feature-icon">
                                         <span><i className="icon-mechanic"></i></span>
                                     </div>
-                                    <h3 className="animated fadeIn"><Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">Global Architect Experts</Link></h3>
+                                    <h3 className="animated fadeIn"><Link href="https://Rent2OwnGo-nextjs.netlify.app/service/buy-a-home">Global Architect Experts</Link></h3>
                                 </div>
                                 <div className="ltn__feature-info">
                                     <p>Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.</p>
@@ -276,7 +276,7 @@ function HistoryPage() {
                                     <div className="ltn__feature-icon">
                                         <span><i className="icon-repair-1"></i></span>
                                     </div>
-                                    <h3 className="animated fadeIn"><Link href="https://quarter-nextjs.netlify.app/service/buy-a-home">Built-in Storage Cupboards</Link></h3>
+                                    <h3 className="animated fadeIn"><Link href="https://Rent2OwnGo-nextjs.netlify.app/service/buy-a-home">Built-in Storage Cupboards</Link></h3>
                                 </div>
                                 <div className="ltn__feature-info">
                                     <p>Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.</p>
@@ -293,7 +293,7 @@ function HistoryPage() {
                     <Row>
                         <Col xs={12}>
                             <div className="call-to-action-inner call-to-action-inner-5 text-decoration text-center">
-                                <h2 className="white-color">24/7 Availability, Make <Link href="https://quarter-nextjs.netlify.app/team/kelian-anderson">An Appointment</Link></h2>
+                                <h2 className="white-color">24/7 Availability, Make <Link href="https://Rent2OwnGo-nextjs.netlify.app/team/kelian-anderson">An Appointment</Link></h2>
                             </div>
                         </Col>
                     </Row>

@@ -407,7 +407,7 @@ function MyAccount() {
                                   <tbody>
                                     <tr>
                                       <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                        <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                           <img
                                             src="/img/product-3/2.jpg"
                                             alt="#"
@@ -417,7 +417,7 @@ function MyAccount() {
                                       <td>
                                         <div className="ltn__my-properties-info">
                                           <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                            <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                               sdfasdfdsfsdafs
                                             </Link>
                                           </h6>
@@ -483,7 +483,7 @@ function MyAccount() {
                                     </tr>
                                     <tr>
                                       <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                        <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                           <img
                                             src="/img/product-3/3.jpg"
                                             alt="#"
@@ -493,7 +493,7 @@ function MyAccount() {
                                       <td>
                                         <div className="ltn__my-properties-info">
                                           <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                            <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                               sdfasdfdsfsdafs
                                             </Link>
                                           </h6>
@@ -559,7 +559,7 @@ function MyAccount() {
                                     </tr>
                                     <tr>
                                       <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                        <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                           <img
                                             src="/img/product-3/7.jpg"
                                             alt="#"
@@ -569,7 +569,7 @@ function MyAccount() {
                                       <td>
                                         <div className="ltn__my-properties-info">
                                           <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                            <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                               sdfasdfdsfsdafs
                                             </Link>
                                           </h6>
@@ -685,7 +685,7 @@ function MyAccount() {
                                   <tbody>
                                     <tr>
                                       <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                        <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                           <img
                                             src="/img/product-3/2.jpg"
                                             alt="#"
@@ -695,7 +695,7 @@ function MyAccount() {
                                       <td>
                                         <div className="ltn__my-properties-info">
                                           <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                            <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                               sdfasdfdsfsdafs
                                             </Link>
                                           </h6>
@@ -761,7 +761,7 @@ function MyAccount() {
                                     </tr>
                                     <tr>
                                       <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                        <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                           <img
                                             src="/img/product-3/3.jpg"
                                             alt="#"
@@ -771,7 +771,7 @@ function MyAccount() {
                                       <td>
                                         <div className="ltn__my-properties-info">
                                           <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                            <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                               sdfasdfdsfsdafs
                                             </Link>
                                           </h6>
@@ -837,7 +837,7 @@ function MyAccount() {
                                     </tr>
                                     <tr>
                                       <td className="ltn__my-properties-img">
-                                        <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                        <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                           <img
                                             src="/img/product-3/7.jpg"
                                             alt="#"
@@ -847,7 +847,7 @@ function MyAccount() {
                                       <td>
                                         <div className="ltn__my-properties-info">
                                           <h6 className="mb-10">
-                                            <Link href="https://quarter-nextjs.netlify.app/shop/new-apartment-nice-view">
+                                            <Link href="https://Rent2OwnGo-nextjs.netlify.app/shop/new-apartment-nice-view">
                                               sdfasdfdsfsdafs
                                             </Link>
                                           </h6>

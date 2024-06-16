@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Slider from "react-slick";
 import { LayoutSix } from "@/layouts";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
 import TitleSection from "@/components/titleSection";
 import featuresData from "@/data/service";
@@ -10,209 +10,36 @@ import { useSelector } from "react-redux";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import ModalVideo from "react-modal-video";
 import ProductItem from "@/components/product";
+import { useEffect } from "react";
 
 
 function HomeVersionEight(props) {
   const [isOpen, setOpen] = useState(false);
   const { products } = useSelector((state) => state.product);
-  const featureData = getProducts(featuresData, "buying", "featured", 3);
-  const countryProducts = getProducts(products, "buying", "country", 5);
-  const featuredProducts = getProducts(products, "buying", "featured", 5);
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
   const { compareItems } = useSelector((state) => state.compare);
+  const [houses, setHouses] = useState([]);
 
-  const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
-    <button
-      {...props}
-      className={
-        "slick-prev slick-arrow" +
-        (currentSlide === 0 ? " slick-disabled" : "")
+
+
+  useEffect(() => {
+    const fetchHouses = async () => {
+      try {
+        const res = await fetch('/api/houses');
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await res.json();
+        setHouses(data);
+      } catch (error) {
+        console.error('Failed to fetch houses:', error);
       }
-      aria-hidden="true"
-      aria-disabled={currentSlide === 0 ? true : false}
-      type="button"
-    >
-      <FaArrowLeft />
-    </button>
-  );
-  const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
-    <button
-      {...props}
-      className={
-        "slick-next slick-arrow" +
-        (currentSlide === slideCount - 1 ? " slick-disabled" : "")
-      }
-      aria-hidden="true"
-      aria-disabled={currentSlide === slideCount - 1 ? true : false}
-      type="button"
-    >
-      <FaArrowRight />
-    </button>
-  );
+    };
 
-  const productsettings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          arrows: false,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 580,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
+    fetchHouses();
+  }, []);
 
-
-  const productCarouselsettings = {
-    arrows: true,
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
-    responsive: [
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 580,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ],
-  };
-
-  const testiMonialsettings = {
-    arrows: true,
-    dots: false,
-    centerMode: false,
-    centerPadding: '80px',
-    infinite: true,
-    speed: 300,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          dots: true,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 580,
-        settings: {
-          arrows: false,
-          dots: true,
-          centerMode: false,
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
-
-
-  const blogSettings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
-    responsive: [
-      {
-        breakpoint: 1199,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
   return (
     <LayoutSix topbar={true}>
 
@@ -245,45 +72,29 @@ function HomeVersionEight(props) {
 
           <Row>
             <Col lg={12}>
-              {!!featuredProducts?.length ? (
-                <Slider
-                  {...productCarouselsettings}
-                  className="ltn__product-slider-item-four-active-full-width slick-arrow-1"
-                >
-                  {featuredProducts.map((product, key) => {
-                    const slug = productSlug(product.title);
-
-                    const discountedPrice = getDiscountPrice(
-                      product.price,
-                      product.discount
-                    ).toFixed(2);
-                    const productPrice = product.price.toFixed(2);
-                    const cartItem = cartItems.find(
-                      (cartItem) => cartItem.id === product.id
-                    );
-                    const wishlistItem = wishlistItems.find(
-                      (wishlistItem) => wishlistItem.id === product.id
-                    );
-                    const compareItem = compareItems.find(
-                      (compareItem) => compareItem.id === product.id
-                    );
-
-                    return (
-                      <ProductItem
-                        key={product.id}
-                        productData={product}
-                        slug={slug}
-                        baseUrl="shop"
-                        discountedPrice={discountedPrice}
-                        productPrice={productPrice}
-                        cartItem={cartItem}
-                        wishlistItem={wishlistItem}
-                        compareItem={compareItem}
-                      />
-                    );
-                  })}
-                </Slider>
-              ) : null}
+              {houses.length > 0 ? (
+                <Row>
+                  {houses.map((house, index) => (
+                    <Col key={index} md={4} className="mb-4">
+                      <Card>
+                        <Card.Img variant="top" src={house.imageUrls[0]} />
+                        <Card.Body>
+                          <Card.Title>{house.rentType.toUpperCase()}</Card.Title>
+                          <Card.Text>
+                            <strong>Price:</strong> {house.price}
+                            <br />
+                            <strong>Price Type:</strong> {house.priceType}
+                            <br />
+                            <strong>House Type:</strong> {house.houseType}
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
+              ) : (
+                <p>No houses available.</p>
+              )}
             </Col>
           </Row>
         </Container>

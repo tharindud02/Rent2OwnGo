@@ -63,7 +63,7 @@ const UpCommingcarousel = () => {
                   <h1 className="mb-30">Upcoming Projects</h1>
                   <ul className="mt">
                     <li>
-                      1. Project Name: <span>Quarter</span>
+                      1. Project Name: <span>Rent2OwnGo</span>
                     </li>
                     <li>
                       2. Project Type: <span>Apartment / Home</span>
@@ -106,7 +106,7 @@ const UpCommingcarousel = () => {
                   <h1>Upcoming Projects</h1>
                   <ul>
                     <li>
-                      1. Project Name: <span>Quarter</span>
+                      1. Project Name: <span>Rent2OwnGo</span>
                     </li>
                     <li>
                       2. Project Type: <span>Apartment / Home</span>
@@ -149,7 +149,7 @@ const UpCommingcarousel = () => {
                   <h1>Upcoming Projects</h1>
                   <ul>
                     <li>
-                      1. Project Name: <span>Quarter</span>
+                      1. Project Name: <span>Rent2OwnGo</span>
                     </li>
                     <li>
                       2. Project Type: <span>Apartment / Home</span>
