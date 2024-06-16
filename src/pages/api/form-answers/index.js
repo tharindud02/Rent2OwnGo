@@ -2,7 +2,7 @@ import FormAnswer from '../utils/models/FormAnswers';
 import dbConnect from '../../../lib/mongodb';
 
 export default async function handler(req, res) {
-    const { method, query } = req;
+    const { method, query, body } = req;
 
     await dbConnect();
 
@@ -31,6 +31,7 @@ export default async function handler(req, res) {
                 await formAnswer.save();
                 res.status(201).json(formAnswer);
             } catch (error) {
+                console.log(error);
                 res.status(500).json({ message: 'Failed to create form answer' });
             }
             break;

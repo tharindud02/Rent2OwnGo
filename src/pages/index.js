@@ -15,6 +15,8 @@ import ProductItem from "@/components/product";
 function HomeVersionEight(props) {
   const [isOpen, setOpen] = useState(false);
   const { products } = useSelector((state) => state.product);
+  const featureData = getProducts(featuresData, "buying", "featured", 3);
+  const countryProducts = getProducts(products, "buying", "country", 5);
   const featuredProducts = getProducts(products, "buying", "featured", 5);
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
@@ -49,6 +51,51 @@ function HomeVersionEight(props) {
     </button>
   );
 
+  const productsettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    prevArrow: <SlickArrowLeft />,
+    nextArrow: <SlickArrowRight />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          arrows: false,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: false,
+          dots: true,
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          dots: true,
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 580,
+        settings: {
+          arrows: false,
+          dots: true,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
 
   const productCarouselsettings = {
@@ -89,9 +136,83 @@ function HomeVersionEight(props) {
     ],
   };
 
+  const testiMonialsettings = {
+    arrows: true,
+    dots: false,
+    centerMode: false,
+    centerPadding: '80px',
+    infinite: true,
+    speed: 300,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    prevArrow: <SlickArrowLeft />,
+    nextArrow: <SlickArrowRight />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: false,
+          dots: true,
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          dots: true,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 580,
+        settings: {
+          arrows: false,
+          dots: true,
+          centerMode: false,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
 
 
+  const blogSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    prevArrow: <SlickArrowLeft />,
+    nextArrow: <SlickArrowRight />,
+    responsive: [
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <LayoutSix topbar={true}>
 
@@ -129,7 +250,7 @@ function HomeVersionEight(props) {
                   {...productCarouselsettings}
                   className="ltn__product-slider-item-four-active-full-width slick-arrow-1"
                 >
-                  {featuredProducts.map((product) => {
+                  {featuredProducts.map((product, key) => {
                     const slug = productSlug(product.title);
 
                     const discountedPrice = getDiscountPrice(
