@@ -58,7 +58,7 @@ const HeaderStyleFour = function ({ SetToggleClassName, topbar }) {
     <>
       <header className="ltn__header-area ltn__header-5 ltn__header-logo-and-mobile-menu-in-mobile ltn__header-logo-and-mobile-menu">
         {/* <!-- ltn__header-top-area start --> */}
-        {topbar ? <HeaderTopBarThree /> : null}
+        {/* {topbar ? <HeaderTopBarThree /> : null} */}
 
         {/* <!-- ltn__header-top-area end --> */}
 
@@ -80,7 +80,7 @@ const HeaderStyleFour = function ({ SetToggleClassName, topbar }) {
                   </div>
                 </div>
               </Col>
-              <Col className="header-menu-column">
+              {/* <Col className="header-menu-column">
                 <div className="header-menu d-none d-xl-block">
                   <nav>
                     <div className="ltn__main-menu">
@@ -88,7 +88,7 @@ const HeaderStyleFour = function ({ SetToggleClassName, topbar }) {
                     </div>
                   </nav>
                 </div>
-              </Col>
+              </Col> */}
               <div className="ltn__header-options ltn__header-options-2 ">
                 {/* <!-- Mobile Menu Button --> */}
                 <div className="mobile-menu-toggle d-xl-none">

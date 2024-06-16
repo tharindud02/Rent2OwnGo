@@ -22,7 +22,7 @@ const LayoutSix = ({ children, navPositionClass, topbar }) => {
           topbar={topbar}
         />
         {children}
-        <Footer />
+        {/* <Footer /> */}
         <ScrollToTop />
       </div>
     </Fragment>
