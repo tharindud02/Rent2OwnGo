@@ -1,15 +1,10 @@
 import { useState } from "react";
-import Slider from "react-slick";
-import { LayoutSix } from "@/layouts";
+import { LayoutSix } from "../layouts";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
-import TitleSection from "@/components/titleSection";
-import featuresData from "@/data/service";
-import HeroSectionStyleSeven from "@/components/hero/styleSeven";
+import TitleSection from "../components/titleSection";
+import HeroSectionStyleSeven from "../components/hero/styleSeven";
 import { useSelector } from "react-redux";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import ModalVideo from "react-modal-video";
-import ProductItem from "@/components/product";
 import { useEffect } from "react";
 
 

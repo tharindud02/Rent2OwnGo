@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import HeaderTopBarThree from "./headerTopBar/headerTopBarStyleThree";
 import HeaderCartMenu from "./elements/headerCartMenu";
 import MobileMenu from "./elements/mobileMennu";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import clsx from "clsx";
-import MenuList from "@/components/header/elements/menuList";
 
 const HeaderStyleFour = function ({ SetToggleClassName, topbar }) {
   const [cartMenuOpener, cartMenuOpenerSet] = useState(false);

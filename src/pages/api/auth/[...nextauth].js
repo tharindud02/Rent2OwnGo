@@ -13,7 +13,7 @@ export default NextAuth({
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      authorize: async (credentials: any) => {
+      authorize: async (credentials) => {
         await dbConnect();
 
         const user = await Admin.findOne({ email: credentials.email });
@@ -26,7 +26,7 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session, token }: any) {
+    async session({ session, token }) {
       session.user.id = token.id;
       return session;
     },

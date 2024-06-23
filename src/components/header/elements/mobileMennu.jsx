@@ -16,7 +16,7 @@ import {
   slideUp,
   slideDown,
   slideToggle,
-} from "@/lib/product";
+} from "../../../lib/product";
 import { useSelector } from "react-redux";
 
 const MobileMenu = function ({ offCanVastoggleBtn, closeSideBar }) {

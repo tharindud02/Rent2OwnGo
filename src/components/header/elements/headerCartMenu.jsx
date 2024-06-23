@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { getDiscountPrice, productSlug } from "@/lib/product";
-import { deleteFromCart } from "@/store/slices/cart-slice";
+import { getDiscountPrice, productSlug } from "../../../lib/product";
+import { deleteFromCart } from "../../../store/slices/cart-slice";
 const HeaderCartMenu = function ({ cartMenuOpener, closeSideBar }) {
   let cartTotalPrice = 0;
   const { cartItems } = useSelector((state) => state.cart);

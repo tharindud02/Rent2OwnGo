@@ -1,4 +1,4 @@
-import useScrollTop from "@/hooks/use-scroll-top";
+import useScrollTop from "../..//hooks/use-scroll-top";
 import { FaAngleUp } from "react-icons/fa";
 
 const ScrollToTop = () => {

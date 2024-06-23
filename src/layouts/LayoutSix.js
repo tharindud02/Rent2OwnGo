@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
-import { HeaderFour } from "@/components/header";
-import Footer from "@/components/footer/footer";
-import ScrollToTop from "@/components/scroll-to-top";
+import { HeaderFour } from "../components/header";
+import Footer from "../components/footer/footer";
+import ScrollToTop from "../components/scroll-to-top";
 
 const LayoutSix = ({ children, navPositionClass, topbar }) => {
   const [toggleClassName, SetToggleClassName] = useState(false);

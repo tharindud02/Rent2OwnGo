@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import { LayoutOne } from "@/layouts";
-import ShopBreadCrumb from "@/components/breadCrumbs/shop";
-import CallToAction from "@/components/callToAction";
+import { LayoutOne } from "../../layouts";
+import ShopBreadCrumb from "../../components/breadCrumbs/shop";
+import CallToAction from "../../components/callToAction";
 
 const comingSoon = () => {
   return (

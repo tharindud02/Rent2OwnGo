@@ -2,7 +2,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../lib/mongodb';
 import Admin from '../utils/models/Admin';
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();

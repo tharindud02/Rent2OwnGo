@@ -13,6 +13,7 @@
     "@next/font": "^13.2.4",
     "@reduxjs/toolkit": "^1.9.1",
     "animate.css": "^3.7.0",
+    "bcrypt": "^5.1.1",
     "bootstrap": "^5.2.3",
     "clsx": "^2.0.0",
     "eslint": "8.35.0",
@@ -24,6 +25,7 @@
     "isotope-masonry-horizontal": "^2.0.1",
     "mongoose": "^8.4.1",
     "next": "13.2.3",
+    "next-auth": "^4.24.7",
     "next-redux-wrapper": "^8.0.0",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
@@ -48,6 +50,7 @@
     "yet-another-react-lightbox": "^3.12.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "20.14.2",
     "sass": "^1.59.2",
     "typescript": "5.4.5"

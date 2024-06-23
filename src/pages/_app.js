@@ -3,10 +3,10 @@ import Head from "next/head";
 import { Nunito_Sans,Poppins } from "next/font/google";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { wrapper } from "@/store";
-import { setProducts } from "@/store/slices/product-slice";
-import products from "@/data/products.json";
-import Preloader from "@/components/preloader";
+import { wrapper } from "../store";
+import { setProducts } from "../store/slices/product-slice";
+import products from "../data/products.json";
+import Preloader from "../components/preloader";
 import "animate.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -14,8 +14,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'node_modules/react-modal-video/scss/modal-video.scss';
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/counter.css";
-import "@/assets/sass/style.scss";
-import "@/assets/responsive.css";
+import "../assets/sass/style.scss";
+import "../assets/responsive.css";
 
 const nunito = Nunito_Sans({
   weight: ["200", "300", "400", "600", "700", "800", "900"],
