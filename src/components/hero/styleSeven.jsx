@@ -1,7 +1,9 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Col, Form, Button } from "react-bootstrap";
 
 function HeroSectionStyleSeven({ navMenuClass }) {
+  const router = useRouter();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -90,12 +92,13 @@ function HeroSectionStyleSeven({ navMenuClass }) {
       }
 
       const data = await res.json();
+      router.push('/houseDetails');
       console.log('Response saved:', data);
     } catch (error) {
       console.error('Failed to save response:', error);
     }
 
-    alert(JSON.stringify(finalResponses, null, 2));
+    // alert(JSON.stringify(finalResponses, null, 2));
   };
 
   const renderQuestion = (question) => {
