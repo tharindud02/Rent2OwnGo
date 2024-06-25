@@ -87,9 +87,9 @@ const HeaderStyleFour = function ({ SetToggleClassName, topbar }) {
                   </nav>
                 </div>
               </Col> */}
-              <div className="ltn__header-options ltn__header-options-2 ">
+              {/* <div className="ltn__header-options ltn__header-options-2 "> */}
                 {/* <!-- Mobile Menu Button --> */}
-                <div className="mobile-menu-toggle d-xl-none">
+                {/* <div className="mobile-menu-toggle d-xl-none">
                   <button
                     onClick={offcanVasToggler}
                     className={`ltn__utilize-toggle ${
@@ -109,8 +109,8 @@ const HeaderStyleFour = function ({ SetToggleClassName, topbar }) {
                       ></path>
                     </svg>
                   </button>
-                </div>
-              </div>
+                </div> */}
+              {/* </div> */}
             </Row>
           </Container>
         </div>
@@ -119,20 +119,20 @@ const HeaderStyleFour = function ({ SetToggleClassName, topbar }) {
 
       {/* <!-- Utilize Cart Menu Start --> */}
 
-      <HeaderCartMenu
+      {/* <HeaderCartMenu
         cartMenu={cartMenu}
         cartMenuOpener={cartMenuOpener}
         closeSideBar={closeSideBar}
-      />
+      /> */}
 
       {/* <!-- Utilize Cart Menu End --> */}
 
       {/* <!-- Utilize Mobile Menu Start --> */}
-      <MobileMenu
+      {/* <MobileMenu
         offCanVastoggleBtn={offCanVastoggleBtn}
         offcanVasToggler={offcanVasToggler}
         closeSideBar={closeSideBar}
-      />
+      /> */}
 
       {/* <!-- Utilize Mobile Menu End --> */}
       <div

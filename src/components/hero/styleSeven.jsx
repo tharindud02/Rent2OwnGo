@@ -166,11 +166,13 @@ function HeroSectionStyleSeven({ navMenuClass }) {
     }
   };
 
+
+
   return (
     <div className="ltn__slider-area ltn__slider-6">
       <div className="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
         <div
-          className="ltn__slide-item-9 ltn__slide-animation-active section-bg-1 bg-image"
+          className="ltn__slide-item-9 ltn__slide-animation-active bg-overlay-black-60 section-bg-1 bg-image"
           style={{
             backgroundImage: `url("/img/banner/house.jpg")`,
           }}
@@ -185,6 +187,8 @@ function HeroSectionStyleSeven({ navMenuClass }) {
                     Home
                   </h3>
 
+
+
                   <div className="ltn__car-dealer-form-tab">
                     {!isFormCompleted ? (
                       <Form className="ltn__car-dealer-form-box row mb--30">
@@ -194,7 +198,7 @@ function HeroSectionStyleSeven({ navMenuClass }) {
                           className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
                         >
                           <div className="btn-wrapper text-center mt-0">
-                            {questions[currentQuestionIndex] && questions[currentQuestionIndex].type != 'text' && <Button
+                            {questions[currentQuestionIndex] && questions[currentQuestionIndex].type !== 'text' && <Button
                               onClick={handleNextClick}
                               className="btn theme-btn-1 btn-effect-1 text-uppercase"
                             >
@@ -284,6 +288,12 @@ function HeroSectionStyleSeven({ navMenuClass }) {
                     )}
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="slide-item-img">
+              <div className="image-titles">
+                <h1>{`It's never been easier to own a home!`}</h1>
+                <h4>{`Rent To Own listings in Western Province!`}</h4>
               </div>
             </div>
           </div>
