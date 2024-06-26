@@ -222,3 +222,11 @@
     color: #6c757d;
     text-align: center;
 }
+
+.progress{
+    height: 0.5rem !important;
+}
+.progress-bar  {
+    background-color: var(--ltn__secondary-color-3) !important;
+}
+

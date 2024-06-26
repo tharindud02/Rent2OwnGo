@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Col, Form, Button } from "react-bootstrap";
+import { Col, Form, Button, ProgressBar } from "react-bootstrap";
+import { motion, AnimatePresence } from "framer-motion";
 
 function HeroSectionStyleSeven({ navMenuClass }) {
   const router = useRouter();
@@ -49,12 +50,32 @@ function HeroSectionStyleSeven({ navMenuClass }) {
     }
   };
 
+  const handleBackClick = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+    }
+  };
+
   const handleEmailNext = () => {
-    if (userInfo.email) {
+    if (validateEmail(userInfo.email)) {
       setIsEmailEntered(true);
     } else {
       alert("Please enter a valid email.");
     }
+  };
+
+  const handleEmailBack = () => {
+    setIsEmailEntered(false);
+    setIsFormCompleted(false);
+  };
+
+  const handlePersonalInfoBack = () => {
+    setIsFormCompleted(true);
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
   };
 
   const handleInputChange = (e) => {
@@ -97,8 +118,6 @@ function HeroSectionStyleSeven({ navMenuClass }) {
     } catch (error) {
       console.error('Failed to save response:', error);
     }
-
-    // alert(JSON.stringify(finalResponses, null, 2));
   };
 
   const renderQuestion = (question) => {
@@ -106,7 +125,9 @@ function HeroSectionStyleSeven({ navMenuClass }) {
       case 'text':
         return (
           <Form.Group key={question._id} className="mb-3">
-            <Form.Label>{question.question}</Form.Label>
+            <Form.Label>
+              <h4 className="text-black">{question.question}</h4>
+            </Form.Label>
             {question.options.map((option, index) => (
               <div
                 key={index}
@@ -121,12 +142,13 @@ function HeroSectionStyleSeven({ navMenuClass }) {
               </div>
             ))}
           </Form.Group>
-
         );
       case 'textarea':
         return (
           <Form.Group key={question._id} className="mb-3">
-            <Form.Label>{question.question}</Form.Label>
+            <Form.Label>
+              <h4 className="text-black">{question.question}</h4>
+            </Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -137,7 +159,9 @@ function HeroSectionStyleSeven({ navMenuClass }) {
       case 'radio':
         return (
           <Form.Group key={question._id} className="mb-3">
-            <Form.Label>{question.question}</Form.Label>
+            <Form.Label>
+              <h4 className="text-black">{question.question}</h4>
+            </Form.Label>
             {question.options.map((option, index) => (
               <Form.Check
                 key={index}
@@ -152,7 +176,9 @@ function HeroSectionStyleSeven({ navMenuClass }) {
       case 'checkbox':
         return (
           <Form.Group key={question._id} className="mb-3">
-            <Form.Label>{question.question}</Form.Label>
+            <Form.Label>
+              <h4 className="text-black">{question.question}</h4>
+            </Form.Label>
             {question.options.map((option, index) => (
               <Form.Check
                 key={index}
@@ -169,7 +195,11 @@ function HeroSectionStyleSeven({ navMenuClass }) {
     }
   };
 
-
+  const calculateProgress = () => {
+    const totalSteps = questions.length + 2; // Questions + Email + Personal Info
+    const currentStep = currentQuestionIndex + (isFormCompleted ? 2 : (isEmailEntered ? 1 : 0));
+    return (currentStep / totalSteps) * 100;
+  };
 
   return (
     <div className="ltn__slider-area ltn__slider-6">
@@ -189,106 +219,166 @@ function HeroSectionStyleSeven({ navMenuClass }) {
                     <span className="ltn__secondary-color-3">Perfect</span>{" "}
                     Home
                   </h3>
-
-
+                  <div className="py-4">
+                    <ProgressBar now={calculateProgress()} />
+                  </div>
 
                   <div className="ltn__car-dealer-form-tab">
-                    {!isFormCompleted ? (
-                      <Form className="ltn__car-dealer-form-box row mb--30">
-                        {questions.length > 0 && renderQuestion(questions[currentQuestionIndex])}
-                        <Col
-                          xs={12}
-                          className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
-                        >
-                          <div className="btn-wrapper text-center mt-0">
-                            {questions[currentQuestionIndex] && questions[currentQuestionIndex].type !== 'text' && <Button
-                              onClick={handleNextClick}
-                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                    <AnimatePresence mode="wait">
+                      {!isFormCompleted ? (
+                        <Form className="ltn__car-dealer-form-box row mb--30">
+                          {questions.length > 0 && (
+                            <motion.div
+                              key={currentQuestionIndex}
+                              initial={{ opacity: 0, x: -100 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: 100 }}
+                              transition={{ duration: 0.5 }}
                             >
-                              Next
-                            </Button>}
-
-                          </div>
-                        </Col>
-                      </Form>
-                    ) : !isEmailEntered ? (
-                      <Form className="ltn__car-dealer-form-box row mb--30">
-                        <Form.Group className="mb-3">
-                          <Form.Label>Email</Form.Label>
-                          <Form.Control
-                            type="email"
-                            name="email"
-                            value={userInfo.email}
-                            onChange={handleInputChange}
-                          />
-                        </Form.Group>
-                        <Col
-                          xs={12}
-                          className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
+                              {renderQuestion(questions[currentQuestionIndex])}
+                              <Col
+                                xs={12}
+                                className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
+                              >
+                                <div className="btn-wrapper text-center mt-0">
+                                  {currentQuestionIndex > 0 && (
+                                    <Button
+                                      onClick={handleBackClick}
+                                      className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
+                                    >
+                                      Back
+                                    </Button>
+                                  )}
+                                  {(answers[questions[currentQuestionIndex]._id]) && (
+                                    <Button
+                                      onClick={handleNextClick}
+                                      className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                    >
+                                      Next
+                                    </Button>
+                                  )}
+                                </div>
+                              </Col>
+                            </motion.div>
+                          )}
+                        </Form>
+                      ) : !isEmailEntered ? (
+                        <motion.div
+                          key="email"
+                          initial={{ opacity: 0, x: -100 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 100 }}
+                          transition={{ duration: 0.5 }}
                         >
-                          <div className="btn-wrapper text-center mt-0">
-                            <Button
-                              onClick={handleEmailNext}
-                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                          <Form className="ltn__car-dealer-form-box row mb--30">
+                            <Form.Group className="mb-3">
+                              <Form.Label>
+                                <h4 className="text-black">Email</h4>
+                              </Form.Label>
+                              <Form.Control
+                                type="email"
+                                name="email"
+                                value={userInfo.email}
+                                onChange={handleInputChange}
+                              />
+                            </Form.Group>
+                            <Col
+                              xs={12}
+                              className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
                             >
-                              Next
-                            </Button>
-                          </div>
-                        </Col>
-                      </Form>
-                    ) : (
-                      <Form className="ltn__car-dealer-form-box row mb--30">
-                        <Form.Group className="mb-3">
-                          <Form.Label>First Name</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="firstName"
-                            value={userInfo.firstName}
-                            onChange={handleInputChange}
-                          />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                          <Form.Label>Last Name</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="lastName"
-                            value={userInfo.lastName}
-                            onChange={handleInputChange}
-                          />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                          <Form.Label>Zip Code</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="zipCode"
-                            value={userInfo.zipCode}
-                            onChange={handleInputChange}
-                          />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                          <Form.Label>Phone</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="phone"
-                            value={userInfo.phone}
-                            onChange={handleInputChange}
-                          />
-                        </Form.Group>
-                        <Col
-                          xs={12}
-                          className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
+                              <div className="btn-wrapper text-center mt-0">
+                                <Button
+                                  onClick={handleEmailBack}
+                                  className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
+                                >
+                                  Back
+                                </Button>
+                                <Button
+                                  onClick={handleEmailNext}
+                                  className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                >
+                                  Next
+                                </Button>
+                              </div>
+                            </Col>
+                          </Form>
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="personal-info"
+                          initial={{ opacity: 0, x: -100 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 100 }}
+                          transition={{ duration: 0.5 }}
                         >
-                          <div className="btn-wrapper text-center mt-0">
-                            <Button
-                              onClick={handleSubmit}
-                              className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                          <Form className="ltn__car-dealer-form-box row mb--30">
+                            <Form.Group className="mb-3">
+                              <Form.Label>
+                                <h4 className="text-black">First Name</h4>
+                              </Form.Label>
+                              <Form.Control
+                                type="text"
+                                name="firstName"
+                                value={userInfo.firstName}
+                                onChange={handleInputChange}
+                              />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                              <Form.Label>
+                                <h4 className="text-black">Last Name</h4>
+                              </Form.Label>
+                              <Form.Control
+                                type="text"
+                                name="lastName"
+                                value={userInfo.lastName}
+                                onChange={handleInputChange}
+                              />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                              <Form.Label>
+                                <h4 className="text-black">Zip Code</h4>
+                              </Form.Label>
+                              <Form.Control
+                                type="text"
+                                name="zipCode"
+                                value={userInfo.zipCode}
+                                onChange={handleInputChange}
+                              />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                              <Form.Label>
+                                <h4 className="text-black">Phone</h4>
+                              </Form.Label>
+                              <Form.Control
+                                type="text"
+                                name="phone"
+                                value={userInfo.phone}
+                                onChange={handleInputChange}
+                              />
+                            </Form.Group>
+                            <Col
+                              xs={12}
+                              className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
                             >
-                              Submit
-                            </Button>
-                          </div>
-                        </Col>
-                      </Form>
-                    )}
+                              <div className="btn-wrapper text-center mt-0">
+                                <Button
+                                  onClick={handlePersonalInfoBack}
+                                  className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
+                                >
+                                  Back
+                                </Button>
+                                <Button
+                                  onClick={handleSubmit}
+                                  className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                >
+                                  Submit
+                                </Button>
+                              </div>
+                            </Col>
+                          </Form>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
