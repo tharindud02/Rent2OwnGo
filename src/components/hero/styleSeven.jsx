@@ -383,10 +383,10 @@ function HeroSectionStyleSeven({ navMenuClass }) {
                 </div>
               </div>
             </div>
-            <div className="slide-item-img">
+            <div className="slide-item-img d-none d-md-block">
               <div className="image-titles">
-                <h1>{`It's never been easier to own a home!`}</h1>
-                <h4>{`Rent To Own listings in Western Province!`}</h4>
+                <h1 className="text-center">{`It's never been easier to own a home!`}</h1>
+                <h4 className="text-center">{`Rent To Own listings in Western Province!`}</h4>
               </div>
             </div>
           </div>
