@@ -2,6 +2,7 @@ export const mongoModels = {
   ADMIN: "Admin",
   QUESTION: "Question",
   ANSWER: "Answer",
-  HOUSE: "House"
+  HOUSE: "House",
+  LINK: "Link"
 }
 

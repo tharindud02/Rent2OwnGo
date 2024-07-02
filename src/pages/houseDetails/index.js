@@ -1,41 +1,53 @@
 import { useState, useEffect } from "react";
 import { LayoutSix } from "../../layouts";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
-function HomeVersionEight(props) {
+function HouseDetails(props) {
     const router = useRouter();
-    const [isOpen, setOpen] = useState(false);
-    const { products } = useSelector((state) => state.product);
-    const { cartItems } = useSelector((state) => state.cart);
-    const { wishlistItems } = useSelector((state) => state.wishlist);
-    const { compareItems } = useSelector((state) => state.compare);
-    const [houses, setHouses] = useState([]);
+    const { houses, userEmail, firstName, lastName, phone, zipcode } = router.query;
+    const [linkData, setLinkData] = useState({ myCredit: '', noThanks: '' });
 
     useEffect(() => {
-        const fetchHouses = async () => {
+        if (houses) {
+            setHouses(JSON.parse(houses));
+        }
+
+        const fetchLinks = async () => {
             try {
-                const res = await fetch("/api/houses");
+                const res = await fetch("/api/links");
                 if (!res.ok) {
                     throw new Error("Network response was not ok");
                 }
                 const data = await res.json();
-                setHouses(data);
+                const links = data.data.reduce((acc, link) => {
+                    acc[link.type] = link.link;
+                    return acc;
+                }, {});
+                setLinkData(links);
             } catch (error) {
-                console.error("Failed to fetch houses:", error);
+                console.error("Failed to fetch links:", error);
             }
         };
 
-        fetchHouses();
-    }, []);
+        fetchLinks();
+    }, [houses]);
 
-    const handleLinksClick = () => {
-        const section = document.getElementById("form-section");
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
+    const buildLink = (baseLink) => {
+        const queryParams = `subid1=${firstName}&subid2=${lastName}&subid3=${zipcode}&subid4=${userEmail}&source_id=${phone}`;
+        return baseLink.includes('?') ? `${baseLink}&${queryParams}` : `${baseLink}?${queryParams}`;
     };
+
+    const handleLinksClick = (link) => {
+        const urlWithParams = buildLink(link);
+
+        window.location.href = urlWithParams;
+    };
+
+    // const alertQueryData = () => {
+    //     alert(`User Email: ${userEmail}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nPhone: ${phone}\nZip Code: ${zipcode}`);
+    // };
 
     return (
         <LayoutSix topbar={true}>
@@ -57,7 +69,7 @@ function HomeVersionEight(props) {
                     <Row className="justify-content-center text-center mb-4">
                         <Col lg={4}>
                             <Button
-                                onClick={handleLinksClick}
+                                onClick={() => handleLinksClick(linkData.myCredit)}
                                 className="btn theme-btn-1 btn-effect-1 text-uppercase mt-4"
                                 style={{ backgroundColor: "#007bff", borderColor: "#007bff", width: "100%" }}
                             >
@@ -68,7 +80,7 @@ function HomeVersionEight(props) {
                     <Row className="justify-content-center text-center">
                         <Col lg={4}>
                             <Button
-                                onClick={handleLinksClick}
+                                onClick={() => handleLinksClick(linkData.noThanks)}
                                 className="btn theme-btn-1 btn-effect-1 text-uppercase mt-4"
                                 style={{ backgroundColor: "#6c757d", borderColor: "#6c757d", width: "100%" }}
                             >
@@ -82,4 +94,4 @@ function HomeVersionEight(props) {
     );
 }
 
-export default HomeVersionEight;
+export default HouseDetails;

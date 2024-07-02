@@ -113,7 +113,16 @@ function HeroSectionStyleSeven({ navMenuClass }) {
       }
 
       const data = await res.json();
-      router.push('/houseDetails');
+      router.push({
+        pathname: '/houseDetails',
+        query: {
+          userEmail: userInfo.email,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          phone: userInfo.phone,
+          zipcode: userInfo.zipCode,
+        },
+      });
       console.log('Response saved:', data);
     } catch (error) {
       console.error('Failed to save response:', error);
