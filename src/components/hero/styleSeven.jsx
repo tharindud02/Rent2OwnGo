@@ -214,7 +214,7 @@ function HeroSectionStyleSeven({ navMenuClass }) {
     <div className="ltn__slider-area ltn__slider-6">
       <div className="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
         <div
-          className="ltn__slide-item-9 ltn__slide-animation-active bg-overlay-black-60 section-bg-1 bg-image"
+          className="ltn__slide-item-9 ltn__slide-animation-active bg-overlay-white-90 section-bg-1 bg-image blur"
           style={{
             backgroundImage: `url("/img/banner/house.jpg")`,
           }}
