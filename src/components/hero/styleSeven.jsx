@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { Col, Form, Button, ProgressBar } from "react-bootstrap";
+import { Col, Form, Button, ProgressBar, Container } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 
 function HeroSectionStyleSeven({ navMenuClass }) {
@@ -220,184 +220,186 @@ function HeroSectionStyleSeven({ navMenuClass }) {
           }}
         >
           <div className="ltn__slide-item-inner">
-            <div className="slide-item-info bg-overlay-white-90 text-center">
-              <div className="slide-item-info-inner slide-item-info-line-no ltn__slide-animation">
-                <div className="slide-item-car-dealer-form">
-                  <h3 className="text-center mb-30">
-                    Find Your{" "}
-                    <span className="ltn__secondary-color-3">Perfect</span>{" "}
-                    Home
-                  </h3>
-                  <div className="py-4">
-                    <ProgressBar now={calculateProgress()} />
-                  </div>
+            <Container>
+              <div className="slide-item-info bg-overlay-white-90 text-center">
+                <div className="slide-item-info-inner slide-item-info-line-no ltn__slide-animation">
+                  <div className="slide-item-car-dealer-form">
+                    <h3 className="text-center mb-30">
+                      Find Your{" "}
+                      <span className="ltn__secondary-color-3">Perfect</span>{" "}
+                      Home
+                    </h3>
+                    <div className="py-4">
+                      <ProgressBar now={calculateProgress()} />
+                    </div>
 
-                  <div className="ltn__car-dealer-form-tab">
-                    <AnimatePresence mode="wait">
-                      {!isFormCompleted ? (
-                        <Form className="ltn__car-dealer-form-box row mb--30">
-                          {questions.length > 0 && (
-                            <motion.div
-                              key={currentQuestionIndex}
-                              initial={{ opacity: 0, x: -100 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: 100 }}
-                              transition={{ duration: 0.5 }}
-                            >
-                              {renderQuestion(questions[currentQuestionIndex])}
+                    <div className="ltn__car-dealer-form-tab">
+                      <AnimatePresence mode="wait">
+                        {!isFormCompleted ? (
+                          <Form className="ltn__car-dealer-form-box row mb--30">
+                            {questions.length > 0 && (
+                              <motion.div
+                                key={currentQuestionIndex}
+                                initial={{ opacity: 0, x: -100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 100 }}
+                                transition={{ duration: 0.5 }}
+                              >
+                                {renderQuestion(questions[currentQuestionIndex])}
+                                <Col
+                                  xs={12}
+                                  className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
+                                >
+                                  <div className="btn-wrapper text-center mt-0">
+                                    {currentQuestionIndex > 0 && (
+                                      <Button
+                                        onClick={handleBackClick}
+                                        className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
+                                      >
+                                        Back
+                                      </Button>
+                                    )}
+                                    {(answers[questions[currentQuestionIndex]._id]) && (
+                                      <Button
+                                        onClick={handleNextClick}
+                                        className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                      >
+                                        Next
+                                      </Button>
+                                    )}
+                                  </div>
+                                </Col>
+                              </motion.div>
+                            )}
+                          </Form>
+                        ) : !isEmailEntered ? (
+                          <motion.div
+                            key="email"
+                            initial={{ opacity: 0, x: -100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 100 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <Form className="ltn__car-dealer-form-box row mb--30">
+                              <Form.Group className="mb-3">
+                                <Form.Label>
+                                  <h4 className="text-black">Email</h4>
+                                </Form.Label>
+                                <Form.Control
+                                  type="email"
+                                  name="email"
+                                  value={userInfo.email}
+                                  onChange={handleInputChange}
+                                />
+                              </Form.Group>
                               <Col
                                 xs={12}
                                 className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
                               >
                                 <div className="btn-wrapper text-center mt-0">
-                                  {currentQuestionIndex > 0 && (
-                                    <Button
-                                      onClick={handleBackClick}
-                                      className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
-                                    >
-                                      Back
-                                    </Button>
-                                  )}
-                                  {(answers[questions[currentQuestionIndex]._id]) && (
-                                    <Button
-                                      onClick={handleNextClick}
-                                      className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                    >
-                                      Next
-                                    </Button>
-                                  )}
+                                  <Button
+                                    onClick={handleEmailBack}
+                                    className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
+                                  >
+                                    Back
+                                  </Button>
+                                  <Button
+                                    onClick={handleEmailNext}
+                                    className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                  >
+                                    Next
+                                  </Button>
                                 </div>
                               </Col>
-                            </motion.div>
-                          )}
-                        </Form>
-                      ) : !isEmailEntered ? (
-                        <motion.div
-                          key="email"
-                          initial={{ opacity: 0, x: -100 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 100 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Form className="ltn__car-dealer-form-box row mb--30">
-                            <Form.Group className="mb-3">
-                              <Form.Label>
-                                <h4 className="text-black">Email</h4>
-                              </Form.Label>
-                              <Form.Control
-                                type="email"
-                                name="email"
-                                value={userInfo.email}
-                                onChange={handleInputChange}
-                              />
-                            </Form.Group>
-                            <Col
-                              xs={12}
-                              className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
-                            >
-                              <div className="btn-wrapper text-center mt-0">
-                                <Button
-                                  onClick={handleEmailBack}
-                                  className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
-                                >
-                                  Back
-                                </Button>
-                                <Button
-                                  onClick={handleEmailNext}
-                                  className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                >
-                                  Next
-                                </Button>
-                              </div>
-                            </Col>
-                          </Form>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="personal-info"
-                          initial={{ opacity: 0, x: -100 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 100 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Form className="ltn__car-dealer-form-box row mb--30">
-                            <Form.Group className="mb-3">
-                              <Form.Label>
-                                <h4 className="text-black">First Name</h4>
-                              </Form.Label>
-                              <Form.Control
-                                type="text"
-                                name="firstName"
-                                value={userInfo.firstName}
-                                onChange={handleInputChange}
-                              />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                              <Form.Label>
-                                <h4 className="text-black">Last Name</h4>
-                              </Form.Label>
-                              <Form.Control
-                                type="text"
-                                name="lastName"
-                                value={userInfo.lastName}
-                                onChange={handleInputChange}
-                              />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                              <Form.Label>
-                                <h4 className="text-black">Zip Code</h4>
-                              </Form.Label>
-                              <Form.Control
-                                type="text"
-                                name="zipCode"
-                                value={userInfo.zipCode}
-                                onChange={handleInputChange}
-                              />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                              <Form.Label>
-                                <h4 className="text-black">Phone</h4>
-                              </Form.Label>
-                              <Form.Control
-                                type="text"
-                                name="phone"
-                                value={userInfo.phone}
-                                onChange={handleInputChange}
-                              />
-                            </Form.Group>
-                            <Col
-                              xs={12}
-                              className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
-                            >
-                              <div className="btn-wrapper text-center mt-0">
-                                <Button
-                                  onClick={handlePersonalInfoBack}
-                                  className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
-                                >
-                                  Back
-                                </Button>
-                                <Button
-                                  onClick={handleSubmit}
-                                  className="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                >
-                                  Submit
-                                </Button>
-                              </div>
-                            </Col>
-                          </Form>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                            </Form>
+                          </motion.div>
+                        ) : (
+                          <motion.div
+                            key="personal-info"
+                            initial={{ opacity: 0, x: -100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 100 }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <Form className="ltn__car-dealer-form-box row mb--30">
+                              <Form.Group className="mb-3">
+                                <Form.Label>
+                                  <h4 className="text-black">First Name</h4>
+                                </Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  name="firstName"
+                                  value={userInfo.firstName}
+                                  onChange={handleInputChange}
+                                />
+                              </Form.Group>
+                              <Form.Group className="mb-3">
+                                <Form.Label>
+                                  <h4 className="text-black">Last Name</h4>
+                                </Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  name="lastName"
+                                  value={userInfo.lastName}
+                                  onChange={handleInputChange}
+                                />
+                              </Form.Group>
+                              <Form.Group className="mb-3">
+                                <Form.Label>
+                                  <h4 className="text-black">Zip Code</h4>
+                                </Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  name="zipCode"
+                                  value={userInfo.zipCode}
+                                  onChange={handleInputChange}
+                                />
+                              </Form.Group>
+                              <Form.Group className="mb-3">
+                                <Form.Label>
+                                  <h4 className="text-black">Phone</h4>
+                                </Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  name="phone"
+                                  value={userInfo.phone}
+                                  onChange={handleInputChange}
+                                />
+                              </Form.Group>
+                              <Col
+                                xs={12}
+                                className="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar"
+                              >
+                                <div className="btn-wrapper text-center mt-0">
+                                  <Button
+                                    onClick={handlePersonalInfoBack}
+                                    className="btn theme-btn-1 btn-effect-1 text-uppercase mr-2"
+                                  >
+                                    Back
+                                  </Button>
+                                  <Button
+                                    onClick={handleSubmit}
+                                    className="btn theme-btn-1 btn-effect-1 text-uppercase"
+                                  >
+                                    Submit
+                                  </Button>
+                                </div>
+                              </Col>
+                            </Form>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="slide-item-img d-none d-md-block">
-              <div className="image-titles">
-                <h1 className="text-center">{`It's never been easier to own a home!`}</h1>
-                <h4 className="text-center">{`Rent To Own listings in Western Province!`}</h4>
+              <div className="slide-item-img d-none d-md-block">
+                <div className="image-titles">
+                  <h1 className="text-center">{`It's never been easier to own a home!`}</h1>
+                  <h4 className="text-center">{`Rent To Own listings in Western Province!`}</h4>
+                </div>
               </div>
-            </div>
+            </Container>
           </div>
         </div>
       </div>
