@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Col, Form, Button, ProgressBar, Container } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
+import { getLocationData } from "../../lib/ipinfo";
 
 function HeroSectionStyleSeven({ navMenuClass }) {
   const router = useRouter();
@@ -10,6 +11,7 @@ function HeroSectionStyleSeven({ navMenuClass }) {
   const [answers, setAnswers] = useState({});
   const [isFormCompleted, setIsFormCompleted] = useState(false);
   const [isEmailEntered, setIsEmailEntered] = useState(false);
+  const [userLocation, setUserLocation] = useState('Uwa Province');
   const [userInfo, setUserInfo] = useState({
     email: "",
     firstName: "",
@@ -33,6 +35,16 @@ function HeroSectionStyleSeven({ navMenuClass }) {
     };
 
     fetchQuestions();
+
+
+    const fetchLocation = async () => {
+      const locationData = await getLocationData();
+      if (locationData && locationData.region) {
+        setUserLocation(locationData.region);
+      }
+    };
+
+    fetchLocation();
   }, []);
 
   const handleAnswerChange = (questionId, value) => {
@@ -396,7 +408,7 @@ function HeroSectionStyleSeven({ navMenuClass }) {
               <div className="slide-item-img d-none d-md-block">
                 <div className="image-titles">
                   <h1 className="text-center">{`It's never been easier to own a home!`}</h1>
-                  <h4 className="text-center">{`Rent To Own listings in Western Province!`}</h4>
+                  <h4 className="text-center">{`Rent To Own listings in ${userLocation}!`}</h4>
                 </div>
               </div>
             </Container>
