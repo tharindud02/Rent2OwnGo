@@ -7,7 +7,7 @@ export const getLocationData = async () => {
       return { region: 'Western Province' };
     }
 
-    const response = await fetch('https://ipinfo.io?token=YOUR_IPINFO_TOKEN');
+    const response = await fetch(`https://ipinfo.io?token=${process.env.IPINFOTOKEN}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
