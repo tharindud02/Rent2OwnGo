@@ -11,7 +11,7 @@ function HeroSectionStyleSeven({ navMenuClass }) {
   const [answers, setAnswers] = useState({});
   const [isFormCompleted, setIsFormCompleted] = useState(false);
   const [isEmailEntered, setIsEmailEntered] = useState(false);
-  const [userLocation, setUserLocation] = useState('Uwa Province');
+  const [userLocation, setUserLocation] = useState('Western Province');
   const [userInfo, setUserInfo] = useState({
     email: "",
     firstName: "",

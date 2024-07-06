@@ -32,9 +32,9 @@ export default async function handler(req, res) {
         res.status(200).json({ region: 'Western Province' });
         return;
     }
-
+    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     try {
-        const response = await fetch(`https://ipinfo.io?token=${process.env.IPINFOTOKEN}`);
+        const response = await fetch(`https://ipinfo.io/${clientIp}?token=${process.env.IPINFOTOKEN}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
