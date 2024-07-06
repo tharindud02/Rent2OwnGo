@@ -25,14 +25,15 @@
 
 export default async function handler(req, res) {
     // Check if the app is running on localhost
-    const host = req.headers.host;
-    if (host && host.startsWith('localhost')) {
-        console.log('Running on localhost, skipping location API call.');
-        // Return a default location if running on localhost
-        res.status(200).json({ region: 'Western Province' });
-        return;
-    }
+    // const host = req.headers.host;
+    // if (host && host.startsWith('localhost')) {
+    //     console.log('Running on localhost, skipping location API call.');
+    //     // Return a default location if running on localhost
+    //     res.status(200).json({ region: 'Western Province' });
+    //     return;
+    // }
     const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log(clientIp);
     try {
         const response = await fetch(`https://ipinfo.io/${clientIp}?token=${process.env.IPINFOTOKEN}`);
         if (!response.ok) {
